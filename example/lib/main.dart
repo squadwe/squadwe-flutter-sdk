@@ -1,0 +1,105 @@
+import 'package:squadwe_client_sdk/squadwe_client_sdk.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  _showSquadweDialog() {
+    SquadweChatDialog.show(
+      context,
+      baseUrl: "https://app.squadwe.com",
+      inboxIdentifier: "xxxxxxxxxxxxxxxxxxx",
+      title: "Squadwe Support",
+      user: SquadweUser(
+        identifier: "test@test.com",
+        name: "Tester test",
+        email: "test@test.com",
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SquadweChat(
+      baseUrl: "https://app.squadwe.com",
+      inboxIdentifier: "xxxxxxxxxxxxxxxxxxx",
+      user: SquadweUser(
+        identifier: "test1@test.com",
+        name: "Tester test1",
+        email: "test1@test.com",
+      ),
+      appBar: AppBar(
+        title: Text(
+          "Squadwe",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        leading: InkWell(
+          onTap: () => _showSquadweDialog(),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset("assets/squadwe_logo.png"),
+          ),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      onWelcome: () {
+        print("Welcome event received");
+      },
+      onPing: () {
+        print("Ping event received");
+      },
+      onConfirmedSubscription: () {
+        print("Confirmation event received");
+      },
+      onMessageDelivered: (_) {
+        print("Message delivered event received");
+      },
+      onMessageSent: (_) {
+        print("Message sent event received");
+      },
+      onConversationIsOffline: () {
+        print("Conversation is offline event received");
+      },
+      onConversationIsOnline: () {
+        print("Conversation is online event received");
+      },
+      onConversationStoppedTyping: () {
+        print("Conversation stopped typing event received");
+      },
+      onConversationStartedTyping: () {
+        print("Conversation started typing event received");
+      },
+    );
+  }
+}
