@@ -1,6 +1,6 @@
 # Integrate Squadwe with Flutter app
 
-Integrate Squadwe flutter client into your flutter app and talk to your visitors in real time. [Squadwe](https://github.com/squadwe/squadwe) helps you to chat with your visitors and provide exceptional support in real time. To use Squadwe in your flutter app, follow the steps described below.
+Integrate Squadwe flutter client into your flutter app and talk to your visitors in real time. [squadwe.com](https://www.squadwe.com) helps you to chat with your visitors and provide exceptional support in real time. To use Squadwe in your flutter app, follow the steps described below.
 
 
 
